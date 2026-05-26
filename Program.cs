@@ -8,7 +8,7 @@ namespace MaoriQuiz
         {
             // User enters their name which is stored in the string name
             Console.Write("Please Enter Your Name:" + " ");
-            string name = Console.ReadLine();
+            string name = Convert.ToString(Console.ReadLine());
             Console.WriteLine($"I See, Your Name Is: {name}");
 
             // User is asked a question whether he wants to do a quiz
@@ -19,11 +19,14 @@ namespace MaoriQuiz
             if (startQuestion != "Yes")
             {
                 Console.WriteLine("Okay");
-               
+
             }
+            else
+            {
+
                 Console.WriteLine("Select Dificulty:\nEasy\nMedium\nHard\nImpossible");
-
-
+                string asuvdkfauksfd = Console.ReadLine();
+            }
         }
     }
 }
