@@ -21,12 +21,8 @@ namespace MaoriQuiz
                 Console.WriteLine("Okay");
                
             }
-            // If the outpout is yes
-            else
-            {
                 Console.WriteLine("Select Dificulty:\nEasy\nMedium\nHard\nImpossible");
 
-            }
 
         }
     }
