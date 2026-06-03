@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel;
+using System.Net;
+using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
 
 namespace MaoriQuiz
@@ -9,6 +11,7 @@ namespace MaoriQuiz
         {
             string name;
             char quizDificultly,replay,choiceConfirmation;
+
 
             // Welcome page
             displayWelcome("----------------------------");
@@ -40,13 +43,7 @@ namespace MaoriQuiz
                                 //the easiest quiz
                                 Console.WriteLine("\nAre You Sure You Want To Do Easy Mode? (Y/N):");
                                 choiceConfirmation = Convert.ToChar(Console.ReadLine());
-                                if (choiceConfirmation != 'Y')
-                                {
-
-
-                                }
-                            }
-                            break;
+                                break;
                         case 'M':
                             {
                                 // the medium quiz
@@ -98,6 +95,11 @@ namespace MaoriQuiz
                             }
                             break;
                     }
+                    switch (choiceConfirmation)
+                            {
+                                    case 'Y':
+
+                            }
                     Console.WriteLine("Congrast, You Got ");
                     Console.WriteLine("Do You Want To Play Again? (Y/N)");
                     replay = Console.ReadLine()[0];
@@ -108,18 +110,38 @@ namespace MaoriQuiz
         static void displayWelcome(string nsg) { Console.WriteLine("Welcome To The Quiz");
             Console.WriteLine(nsg);
                 }
-        static string inputName() 
+        static string inputName()
         {
-            // This is the code where the user input their name
+            // This is the code where the user input their first name 
             Console.Write("\nPlease Enter Your First Name:" + " ");
             string firstName = Convert.ToString(Console.ReadLine());
-            Console.Write("\nPlease Enter Your Last Name:" + " ");
-            string lastName = Convert.ToString(Console.ReadLine());
-            Console.WriteLine($"\nI See, Your Name Is: {firstName + lastName}");
-            Console.WriteLine("----------------------------");
-            string fullName = firstName + lastName;
-            return fullName;
 
+            while ((firstName.Length <= 3) || (firstName.Length >= 20) || (!firstName.All(char.IsLetter)))
+            {
+                Console.WriteLine("\nInvalid First Name\n(You Had Incorrectly Wrote Your First Name Wrong. Name Has To Be More Than 3 Characters And Less Than 20 Characters)");
+                Console.Write("\nPlease Enter Your First Name:" + " ");
+               firstName = Convert.ToString(Console.ReadLine());
+                
+            }
+
+            // This is the code where the user input their last name
+            Console.WriteLine("\nPlease Enter Your Last Name:" + " ");
+            string lastName = Convert.ToString(Console.ReadLine());
+            while ((lastName.Length <=3) || (lastName.Length >=20) || (!lastName.All(char.IsLetter)))
+            {
+                    Console.WriteLine("\nInvalid Last Name\n(You Had Incorrectly Wrote Your Last Name Wrong. Name Has To Be More Than 3 Characters And Less Than 20 Characters)");
+                Console.WriteLine("\nPlease Enter Your Last Name:" + " ");
+               lastName = Convert.ToString(Console.ReadLine());
+
+            }
+
+            Console.WriteLine($"\nI See, Your Name Is: {firstName + " " + lastName}");
+                Console.WriteLine("----------------------------");
+
+            return firstName;
+            return lastName;
+
+        
         }
         static char displayChoice()
         {
