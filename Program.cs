@@ -144,7 +144,7 @@ namespace MaoriQuiz
                 char answer = Console.ReadLine().ToUpper()[0];
                 if (answer == easyAnswer[i])
                 {
-                            Console.WriteLine("Congrast You Got The Correct Answer");
+                            Console.WriteLine("Congrast You Got The Correct Answe");
                 }
                 }
             return easyAnswer
