@@ -9,6 +9,7 @@ namespace MaoriQuiz
     {
         static void Main(string[] args)
         {
+            String[] easyQuestion = {"ANSWER THESE QUESTION BY ENTERING THE LETTERS IN THE LIST", "\n(1.) What Is The Māori Word For \"Hello\"?\n(A)Kia Ora\n(B)Haere Rā\n(C)Whānau\n(D)Kai","\n(2.)What Does \"Whānau\" Mean?\n(A)School\n(B)Family\n(C)Food\n(D)Friend", "\n(3.)What Is The Māori Word For \"Food\"?\n(A)Moana\n(B)Whare\n(C)Kai\n(D)Aroha", "\n(4.)What Does \"Aroha\" Mean?\n(A)Love\n(B)Water\n(C)Mountain\n(D)Bird", "\n(5.) What Is The Māori Word For \"House\"?\n(A)Whenua\n(B)Whare\n(C)Waka\n(D)Kura" };
             string name;
             char quizDificultly, replay, choiceConfirmation;
             choiceConfirmation = 'N';
@@ -49,6 +50,8 @@ namespace MaoriQuiz
                                     //the easiest quiz
                                     Console.WriteLine("\nAre You Sure You Want To Do Easy Mode? (Y/N):");
                                     choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
+
+                                     displayQuestions(easyQuestion);
 
                                     break;
                                 }
@@ -131,7 +134,21 @@ namespace MaoriQuiz
                     Console.WriteLine("\nSelect Dificulty:\nEasy (E)\nMedium (M)\nHard (H)\nImpossible (I)");
                     char quizDificulty = Console.ReadLine().ToUpper()[0];
                     return quizDificulty;
+                { 
+                static int displayQuestions(String[] inQuestion)
+                {
+                    Char[] easyAnswer = { 'A', 'B', 'C', 'A', 'B' };
+                    for (int i = 0; i < inQuestion.Length; i++)
+                {
+                Console.WriteLine(inQuestion[i]);
+                char answer = Console.ReadLine().ToUpper()[0];
+                if (answer == easyAnswer[i])
+                {
+                            Console.WriteLine("Congrast You Got The Correct Answer");
                 }
+                }
+            return easyAnswer
             }
-        }
+    }
+}
     
