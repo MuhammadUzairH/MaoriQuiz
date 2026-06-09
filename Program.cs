@@ -9,7 +9,7 @@ namespace MaoriQuiz
     {
         static void Main(string[] args)
         {
-            String[] easyQuestion = {"ANSWER THESE QUESTION BY ENTERING THE LETTERS IN THE LIST", "\n(1.) What Is The Māori Word For \"Hello\"?\n(A)Kia Ora\n(B)Haere Rā\n(C)Whānau\n(D)Kai","\n(2.)What Does \"Whānau\" Mean?\n(A)School\n(B)Family\n(C)Food\n(D)Friend", "\n(3.)What Is The Māori Word For \"Food\"?\n(A)Moana\n(B)Whare\n(C)Kai\n(D)Aroha", "\n(4.)What Does \"Aroha\" Mean?\n(A)Love\n(B)Water\n(C)Mountain\n(D)Bird", "\n(5.) What Is The Māori Word For \"House\"?\n(A)Whenua\n(B)Whare\n(C)Waka\n(D)Kura" };
+            String[] easyQuestion = { "ANSWER THESE QUESTION BY ENTERING THE FOLLOWING LETTERS IN THE LIST\n----------------------------\n\n(1.) What Is The Māori Word For \"Hello\"?\n\n(A)Kia Ora\n\n(B)Haere Rā\n\n(C)Whānau\n\n(D)Kai", "\n(2.)What Does \"Whānau\" Mean?\n\n(A)School\n\n(B)Family\n\n(C)Food\n\n(D)Friend", "\n\n(3.)What Is The Māori Word For \"Food\"?\n\n(A)Moana\n\n(B)Whare\n\n(C)Kai\n\n(D)Aroha", "\n\n(4.)What Does \"Aroha\" Mean?\n\n(A)Love\n\n(B)Water\n\n(C)Mountain\n\n(D)Bird", "\n\n(5.) What Is The Māori Word For \"House\"?\n\n(A)Whenua\n\n(B)Whare\n\n(C)Waka\n\n(D)Kura" };
             string name;
             char quizDificultly, replay, choiceConfirmation;
             choiceConfirmation = 'N';
@@ -48,37 +48,37 @@ namespace MaoriQuiz
                             case 'E':
                                 {
                                     //the easiest quiz
-                                    Console.WriteLine("\nAre You Sure You Want To Do Easy Mode? (Y/N):");
+                                    Console.Write("\nAre You Sure You Want To Do Easy Mode? (Y/N):");
                                     choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
 
-                                     displayQuestions(easyQuestion);
+                                    displayQuestions(easyQuestion);
 
                                     break;
                                 }
                             case 'M':
                                 {
                                     // the medium quiz
-                                    Console.WriteLine("\nAre You Sure You Want To Do Medium Mode? (Y/N):");
+                                    Console.Write("\nAre You Sure You Want To Do Medium Mode? (Y/N):");
                                     choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
                                 }
                                 break;
                             case 'H':
                                 {
                                     // the 2nd hardest quiz
-                                    Console.WriteLine("\nAre You Sure You Want To Do Hard Mode? (Y/N):");
+                                    Console.Write("\nAre You Sure You Want To Do Hard Mode? (Y/N):");
                                     choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
                                 }
                                 break;
                             case 'I':
                                 {
                                     // the most most hardest quiz
-                                    Console.WriteLine("\nAre You Sure You Want To Do Impossible Mode? (Y/N):");
+                                    Console.Write("\nAre You Sure You Want To Do Impossible Mode? (Y/N):");
                                     choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
                                 }
                                 break;
                             default:
                                 {
-                                    Console.WriteLine("\nInvalid Option");
+                                    Console.Write("\nInvalid Option");
                                 }
                                 break;
                         }
@@ -92,63 +92,73 @@ namespace MaoriQuiz
             }
         }
         // This is the welcome page
-        static void displayWelcome(string nsg) { Console.WriteLine("Welcome To The Quiz");
-                    Console.WriteLine(nsg);
-                }
-                static string inputName()
-                {
-                    // This is the code where the user input their first name 
-                    Console.Write("\nPlease Enter Your First Name:" + " ");
-                    string firstName = Convert.ToString(Console.ReadLine());
+        static void displayWelcome(string nsg)
+        {
+            Console.WriteLine("Welcome To The Quiz");
+            Console.WriteLine(nsg);
+        }
+        static string inputName()
+        {
+            // This is the code where the user input their first name 
+            Console.Write("\nPlease Enter Your First Name:" + " ");
+            string firstName = Convert.ToString(Console.ReadLine());
 
-                    while ((firstName.Length <= 3) || (firstName.Length >= 20) || (!firstName.All(char.IsLetter)))
-                    {
-                        Console.WriteLine("\nInvalid First Name\n(You Had Incorrectly Wrote Your First Name Wrong. Name Has To Be More Than 3 Characters And Less Than 20 Characters)");
-                        Console.Write("\nPlease Enter Your First Name:" + " ");
-                        firstName = Convert.ToString(Console.ReadLine());
+            while ((firstName.Length <= 3) || (firstName.Length >= 20) || (!firstName.All(char.IsLetter)))
+            {
+                Console.WriteLine("\nInvalid First Name\n(You Had Incorrectly Wrote Your First Name Wrong. Name Has To Be More Than 3 Characters And Less Than 20 Characters)");
+                Console.Write("\nPlease Enter Your First Name:" + " ");
+                firstName = Convert.ToString(Console.ReadLine());
 
-                    }
+            }
 
-                    // This is the code where the user input their last name
-                    Console.WriteLine("\nPlease Enter Your Last Name:" + " ");
-                    string lastName = Convert.ToString(Console.ReadLine());
-                    while ((lastName.Length <= 3) || (lastName.Length >= 20) || (!lastName.All(char.IsLetter)))
-                    {
-                        Console.WriteLine("\nInvalid Last Name\n(You Had Incorrectly Wrote Your Last Name Wrong. Name Has To Be More Than 3 Characters And Less Than 20 Characters)");
-                        Console.WriteLine("\nPlease Enter Your Last Name:" + " ");
-                        lastName = Convert.ToString(Console.ReadLine());
+            // This is the code where the user input their last name
+            Console.Write("\nPlease Enter Your Last Name:" + " ");
+            string lastName = Convert.ToString(Console.ReadLine());
+            while ((lastName.Length <= 3) || (lastName.Length >= 20) || (!lastName.All(char.IsLetter)))
+            {
+                Console.WriteLine("\nInvalid Last Name\n(You Had Incorrectly Wrote Your Last Name Wrong. Name Has To Be More Than 3 Characters And Less Than 20 Characters)");
+                Console.WriteLine("\nPlease Enter Your Last Name:" + " ");
+                lastName = Convert.ToString(Console.ReadLine());
 
-                    }
+            }
 
-                    Console.WriteLine($"\nI See, Your Name Is: {firstName + " " + lastName}");
-                    Console.WriteLine("----------------------------");
+            Console.WriteLine($"\nI See, Your Name Is: {firstName + " " + lastName}");
+            Console.WriteLine("----------------------------");
 
-                    return firstName;
-                    return lastName;
+            return firstName;
+            return lastName;
 
 
-                }
-                static char displayChoice()
-                {
-                    // This code allows user to choose between the dificulty they want to do
-                    Console.WriteLine("\nSelect Dificulty:\nEasy (E)\nMedium (M)\nHard (H)\nImpossible (I)");
-                    char quizDificulty = Console.ReadLine().ToUpper()[0];
-                    return quizDificulty;
-                { 
-                static int displayQuestions(String[] inQuestion)
-                {
-                    Char[] easyAnswer = { 'A', 'B', 'C', 'A', 'B' };
-                    for (int i = 0; i < inQuestion.Length; i++)
-                {
+        }
+        static char displayChoice()
+        {
+            // This code allows user to choose between the dificulty they want to do
+            Console.WriteLine("\nSelect Dificulty:\n\nEasy (E)\n\nMedium (M)\n\nHard (H)\n\nImpossible (I)\n");
+            char quizDificulty = Console.ReadLine().ToUpper()[0];
+            return quizDificulty;
+        }
+
+        static int displayQuestions(String[] inQuestion)
+        {
+            Char[] easyAnswer = { 'A', 'B', 'C', 'A', 'B' };
+            for (int i = 0; i < inQuestion.Length; i++)
+            {
                 Console.WriteLine(inQuestion[i]);
                 char answer = Console.ReadLine().ToUpper()[0];
-                if (answer == easyAnswer[i])
+                if (answer != easyAnswer[i])
                 {
-                            Console.WriteLine("Congrast You Got The Correct Answe");
+                    Console.WriteLine($"Incorrect, The Correct Answer Was {easyAnswer[i]}");
                 }
+                else
+                {
+                    Console.WriteLine("Congrast You Got The Correct Answer; +1 Point");
                 }
-            return easyAnswer
             }
+            return 0;
+        }
     }
 }
+        
     
+
+
