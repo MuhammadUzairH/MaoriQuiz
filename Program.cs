@@ -150,7 +150,7 @@ namespace MaoriQuiz
             {
                 Console.WriteLine(inQuestion[i]);
                 char answer = Console.ReadLine().ToUpper()[0];
-                int point = 1;
+                int totalpoints = 1;
 
                 if (answer == easyAnswer[i])
                 {
