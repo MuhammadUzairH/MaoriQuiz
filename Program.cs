@@ -33,7 +33,7 @@ namespace MaoriQuiz
                 Console.WriteLine("\nOkay");
 
             }
-            // Dsiplaying question and the difficulty the user sets it to be
+            // Displaying question and the difficulty the user sets it to be
             else
             {
                 // This do loop would let the user to replay the quiz if they want to play again.
@@ -89,7 +89,7 @@ namespace MaoriQuiz
 
                     } while (choiceConfirmation == 'N');
 
-                    Console.WriteLine("Congrast, You Got ");
+                    Console.WriteLine("Congrats, You Got ");
                     Console.WriteLine("Do You Want To Play Again? (Y/N)");
                     replay = Console.ReadLine()[0];
                 } while (replay == 'Y');
@@ -154,7 +154,7 @@ namespace MaoriQuiz
 
                 if (answer == easyAnswer[i])
                 {
-                     Console.WriteLine($"Congrast You Got The Correct Answer; {point++} Point");
+                     Console.WriteLine($"Congrast You Got The Correct Answer; {totalpoints++} Point");
                 }
                 else
                 {
