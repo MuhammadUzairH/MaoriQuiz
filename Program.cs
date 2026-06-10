@@ -34,7 +34,7 @@ namespace MaoriQuiz
                 Console.WriteLine("\nOkay");
 
             }
-            // Displaying question and the difficulty the user sets it to be
+            // Displaying question and the difficulty the user sets it to be.
             else
             {
                 // This do loop would let the user to replay the quiz if they want to play again.
