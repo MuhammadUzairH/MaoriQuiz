@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Drawing;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
@@ -51,7 +52,10 @@ namespace MaoriQuiz
                                     Console.Write("\nAre You Sure You Want To Do Easy Mode? (Y/N):");
                                     choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
 
-                                    displayQuestions(easyQuestion);
+                                    if (choiceConfirmation == 'Y')
+                                    {
+                                        displayQuestions(easyQuestion);
+                                    }
 
                                     break;
                                 }
@@ -103,9 +107,9 @@ namespace MaoriQuiz
             Console.Write("\nPlease Enter Your First Name:" + " ");
             string firstName = Convert.ToString(Console.ReadLine());
 
-            while ((firstName.Length <= 3) || (firstName.Length >= 20) || (!firstName.All(char.IsLetter)))
+            while ((firstName.Length < 3) || (firstName.Length > 20) || (!firstName.All(char.IsLetter)))
             {
-                Console.WriteLine("\nInvalid First Name\n(You Had Incorrectly Wrote Your First Name Wrong. Name Has To Be More Than 3 Characters And Less Than 20 Characters)");
+                Console.WriteLine("\nInvalid First Name\n(You Had Incorrectly Wrote Your First Name Wrong. Name Has To Be Atleast 3 Characters And Less Than 20 Characters.\nFirst Name Cannot Contain Any Space Or Any Symbols And Is Required To Just Input Your First Name.)");
                 Console.Write("\nPlease Enter Your First Name:" + " ");
                 firstName = Convert.ToString(Console.ReadLine());
 
@@ -114,9 +118,9 @@ namespace MaoriQuiz
             // This is the code where the user input their last name
             Console.Write("\nPlease Enter Your Last Name:" + " ");
             string lastName = Convert.ToString(Console.ReadLine());
-            while ((lastName.Length <= 3) || (lastName.Length >= 20) || (!lastName.All(char.IsLetter)))
+            while ((lastName.Length < 3) || (lastName.Length > 20) || (!lastName.All(char.IsLetter)))
             {
-                Console.WriteLine("\nInvalid Last Name\n(You Had Incorrectly Wrote Your Last Name Wrong. Name Has To Be More Than 3 Characters And Less Than 20 Characters)");
+                Console.WriteLine("\nInvalid Last Name\n(You Had Incorrectly Wrote Your Last Name Wrong. Name Has To Be Atleast 3 Characters And Less Than 20 Characters.\nLast Name Cannot Contain Any Space Or Any Symbols And Is Required To Just Input Your Last Name.");
                 Console.WriteLine("\nPlease Enter Your Last Name:" + " ");
                 lastName = Convert.ToString(Console.ReadLine());
 
@@ -140,19 +144,23 @@ namespace MaoriQuiz
 
         static int displayQuestions(String[] inQuestion)
         {
+            
             Char[] easyAnswer = { 'A', 'B', 'C', 'A', 'B' };
             for (int i = 0; i < inQuestion.Length; i++)
             {
                 Console.WriteLine(inQuestion[i]);
                 char answer = Console.ReadLine().ToUpper()[0];
-                if (answer != easyAnswer[i])
+                int point = 1;
+
+                if (answer == easyAnswer[i])
                 {
-                    Console.WriteLine($"Incorrect, The Correct Answer Was {easyAnswer[i]}");
+                     Console.WriteLine($"Congrast You Got The Correct Answer; {point++} Point");
                 }
                 else
                 {
-                    Console.WriteLine("Congrast You Got The Correct Answer; +1 Point");
+                    Console.WriteLine($"Incorrect, The Correct Answer Was {easyAnswer[i]}");
                 }
+                
             }
             return 0;
         }
