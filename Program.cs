@@ -11,6 +11,7 @@ namespace MaoriQuiz
         static void Main(string[] args)
         {
             String[] easyQuestion = { "ANSWER THESE QUESTION BY ENTERING THE FOLLOWING LETTERS IN THE LIST\n----------------------------\n\n(1.) What Is The Māori Word For \"Hello\"?\n\n(A)Kia Ora\n\n(B)Haere Rā\n\n(C)Whānau\n\n(D)Kai", "\n(2.)What Does \"Whānau\" Mean?\n\n(A)School\n\n(B)Family\n\n(C)Food\n\n(D)Friend", "\n\n(3.)What Is The Māori Word For \"Food\"?\n\n(A)Moana\n\n(B)Whare\n\n(C)Kai\n\n(D)Aroha", "\n\n(4.)What Does \"Aroha\" Mean?\n\n(A)Love\n\n(B)Water\n\n(C)Mountain\n\n(D)Bird", "\n\n(5.) What Is The Māori Word For \"House\"?\n\n(A)Whenua\n\n(B)Whare\n\n(C)Waka\n\n(D)Kura" };
+            Char[] easyAnswer = { 'A', 'B', 'C', 'A', 'B' };
             string name;
             char quizDificultly, replay, choiceConfirmation;
             choiceConfirmation = 'N';
@@ -55,6 +56,7 @@ namespace MaoriQuiz
                                     if (choiceConfirmation == 'Y')
                                     {
                                         displayQuestions(easyQuestion);
+                                        
                                     }
 
                                     break;
@@ -142,23 +144,23 @@ namespace MaoriQuiz
             return quizDificulty;
         }
 
-        static int displayQuestions(String[] inQuestion)
+        static int displayQuestions(String[] inQuestion, Char[] correctAnswer)
         {
-            
-            Char[] easyAnswer = { 'A', 'B', 'C', 'A', 'B' };
+           
             for (int i = 0; i < inQuestion.Length; i++)
             {
+
                 Console.WriteLine(inQuestion[i]);
                 char answer = Console.ReadLine().ToUpper()[0];
-                int totalpoints = 1;
-
-                if (answer == easyAnswer[i])
+                int totalpoints = 0;
+                if (answer == correctAnswer[i])
                 {
-                     Console.WriteLine($"Congrast You Got The Correct Answer; {totalpoints++} Point");
+                     Console.WriteLine($"Congrats You Got The Correct Answer; {totalpoints + 1} Point");
+                     totalpoints = + 1;
                 }
                 else
                 {
-                    Console.WriteLine($"Incorrect, The Correct Answer Was {easyAnswer[i]}");
+                    Console.WriteLine($"Incorrect, The Correct Answer Was {correctAnswer[i]}");
                 }
                 
             }
