@@ -91,7 +91,7 @@ namespace MaoriQuiz
 
                     } while (choiceConfirmation == 'N');
 
-                    Console.WriteLine("Congrats, You Got ");
+                    Console.WriteLine($"Congrats, You Got ");
                     Console.WriteLine("Do You Want To Play Again? (Y/N)");
                     replay = Console.ReadLine()[0];
                 } while (replay == 'Y');
@@ -155,8 +155,7 @@ namespace MaoriQuiz
                 int totalpoints = 0;
                 if (answer == correctAnswer[i])
                 {
-                     Console.WriteLine($"Congrats You Got The Correct Answer; {totalpoints + 1} Point");
-                     totalpoints = + 1;
+                     Console.WriteLine($"Congrats You Got The Correct Answer; You Have Received 1 Point. Making Your Total {totalpoints++} Point");
                 }
                 else
                 {
