@@ -149,7 +149,7 @@ namespace MaoriQuiz
            
             for (int i = 0; i < inQuestion.Length; i++)
             {
-
+                // This question displays the question based on the quick dificulty
                 Console.WriteLine(inQuestion[i]);
                 char answer = Console.ReadLine().ToUpper()[0];
                 int totalpoints = 0;
