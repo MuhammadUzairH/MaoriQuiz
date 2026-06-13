@@ -146,7 +146,7 @@ namespace MaoriQuiz
 
         static int displayQuestions(String[] inQuestion, Char[] correctAnswer)
         {
-            int totalpoints = 0;
+            int totalpoints = 1;
             for (int i = 0; i < inQuestion.Length; i++)
             {
                 // This question displays the question based on the quick dificulty
