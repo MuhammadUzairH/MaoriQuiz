@@ -52,7 +52,7 @@ namespace MaoriQuiz
                                     //the easiest quiz
                                     Console.Write("\nAre You Sure You Want To Do Easy Mode? (Y/N):");
                                     choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
-
+                                    // If the user chooses Y, then the method continues, else it stops.
                                     if (choiceConfirmation == 'Y')
                                     {
                                         displayQuestions(easyQuestion, easyAnswer);
