@@ -146,7 +146,7 @@ namespace MaoriQuiz
 
         static int displayQuestions(String[] inQuestion, Char[] correctAnswer)
         {
-            int totalpoints = 1;
+            int totalPoints = 1;
             for (int i = 0; i < inQuestion.Length; i++)
             {
                 // This question displays the question based on the quick dificulty
@@ -154,7 +154,7 @@ namespace MaoriQuiz
                 char answer = Console.ReadLine().ToUpper()[0];
                 if (answer == correctAnswer[i])
                 {
-                     Console.WriteLine($"Congrats You Got The Correct Answer; You Have Received 1 Point. Making Your Total {totalpoints++} Point");
+                     Console.WriteLine($"Congrats You Got The Correct Answer; You Have Received 1 Point. Making Your Total {totalPoints++} Point");
                 }
                 else
                 {
@@ -162,7 +162,7 @@ namespace MaoriQuiz
                 }
                 
             }
-            return totalpoints;
+            return totalPoints;
         }
     }
 }
