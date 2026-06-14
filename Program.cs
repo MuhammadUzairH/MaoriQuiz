@@ -14,6 +14,7 @@ namespace MaoriQuiz
             Char[] easyAnswer = { 'A', 'B', 'C', 'A', 'B' };
             string name;
             char quizDificultly, replay, choiceConfirmation;
+            int totalPoints;
             choiceConfirmation = 'N';
 
 
