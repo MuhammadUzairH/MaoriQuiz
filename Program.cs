@@ -12,7 +12,7 @@ namespace MaoriQuiz
         {
             String[] easyQuestion = { "ANSWER THESE QUESTION BY ENTERING THE FOLLOWING LETTERS IN THE LIST\n----------------------------\n\n(1.) What Is The Māori Word For \"Hello\"?\n\n(A)Kia Ora\n\n(B)Haere Rā\n\n(C)Whānau\n\n(D)Kai", "\n\n(2.) What Does \"Whānau\" Mean?\n\n(A)School\n\n(B)Family\n\n(C)Food\n\n(D)Friend", "\n\n(3.) What Is The Māori Word For \"Food\"?\n\n(A)Moana\n\n(B)Whare\n\n(C)Kai\n\n(D)Aroha", "\n\n(4.) What Does \"Aroha\" Mean?\n\n(A)Love\n\n(B)Water\n\n(C)Mountain\n\n(D)Bird", "\n\n(5.) What Is The Māori Word For \"House\"?\n\n(A)Whenua\n\n(B)Whare\n\n(C)Waka\n\n(D)Kura"};
             Char[] easyAnswer = { 'A', 'B', 'C', 'A', 'B' };
-            String[] mediumQuestion = { "ANSWER THESE QUESTION BY ENTERING THE FOLLOWING LETTERS IN THE LIST\n----------------------------\n\n(1.) What Is The Meaning Of The Māori Word \"Mana\"?\n\n(A)Food\n\n(B)Prestige, Authority, Or Respect\n\n(C)Family\n\n(D)House","\n\n(2.) What Is Marae Primarily Used For?\n\n(A)Fishing\n\n(B)Farming\n\n(C)Community Gatherings And Cultural Events\n\n(D)Transport","\n\n(3.) Which Māori Word Means \"Land\"?\n\n(A)Whenua\n\n(B)Moana\n\n(C)Waka\n\n(D)Awa", "\n\n(4.) What Is The Purpose Of A Haka?\n\n(A)To Cook Food\n\n(B)To Welcome Visitors, Show Pride, Or Challenge Opponents\n\n(C)To Build Houses\n\n(D)To Travel Across Water", "\n\n(5.) Which Of These Is A Traditional Māori Canoe?\n\n(A)Marae\n\n(B)Pounamu\n\n(C)Waka\n\n(D)Taonga"}
+            String[] mediumQuestion = { "ANSWER THESE QUESTION BY ENTERING THE FOLLOWING LETTERS IN THE LIST\n----------------------------\n\n(1.) What Is The Meaning Of The Māori Word \"Mana\"?\n\n(A)Food\n\n(B)Prestige, Authority, Or Respect\n\n(C)Family\n\n(D)House", "\n\n(2.) What Is Marae Primarily Used For?\n\n(A)Fishing\n\n(B)Farming\n\n(C)Community Gatherings And Cultural Events\n\n(D)Transport", "\n\n(3.) Which Māori Word Means \"Land\"?\n\n(A)Whenua\n\n(B)Moana\n\n(C)Waka\n\n(D)Awa", "\n\n(4.) What Is The Purpose Of A Haka?\n\n(A)To Cook Food\n\n(B)To Welcome Visitors, Show Pride, Or Challenge Opponents\n\n(C)To Build Houses\n\n(D)To Travel Across Water", "\n\n(5.) Which Of These Is A Traditional Māori Canoe?\n\n(A)Marae\n\n(B)Pounamu\n\n(C)Waka\n\n(D)Taonga" };
             Char[] mediumAnswer = { 'B', 'C', 'A', 'B', 'C' };
             string name;
             char quizDificultly, replay, choiceConfirmation;
@@ -58,18 +58,19 @@ namespace MaoriQuiz
                                     // If the user chooses Y, then the method continues, else it stops.
                                     if (choiceConfirmation == 'Y')
                                     {
-                                        displayQuestions(easyQuestion, easyAnswer);
-                                        
+                                        displayQuestions(easyQuestion, easyAnswer); 
                                     }
-
-                                    break;
                                 }
+                                break;
                             case 'M':
                                 {
                                     // the medium quiz
                                     Console.Write("\nAre You Sure You Want To Do Medium Mode? (Y/N):");
                                     choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
-   
+                                    if (choiceConfirmation == 'Y')
+                                    {
+                                        displayQuestions(mediumQuestion, mediumAnswer);
+                                    }
                                 }
                                 break;
                             case 'H':
