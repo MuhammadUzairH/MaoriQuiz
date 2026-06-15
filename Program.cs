@@ -81,6 +81,10 @@ namespace MaoriQuiz
                                     // the 2nd hardest quiz
                                     Console.Write("\nAre You Sure You Want To Do Hard Mode? (Y/N):");
                                     choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
+                                    if (choiceConfirmation == 'Y')
+                                    {
+                                        displayQuestions(hardQuestion, hardAnswer);
+                                    }
                                 }
                                 break;
                             case 'I':
