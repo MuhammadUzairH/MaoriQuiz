@@ -1,24 +1,20 @@
-﻿using System.ComponentModel;
-using System.Drawing;
-using System.Net;
-using System.Net.Http.Headers;
-using System.Security.Cryptography.X509Certificates;
-
+﻿
 namespace MaoriQuiz
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            String[] easyQuestion = { "ANSWER THESE QUESTION BY ENTERING THE FOLLOWING LETTERS IN THE LIST\n----------------------------\n\n(1.) What Is The Māori Word For \"Hello\"?\n\n(A)Kia Ora\n\n(B)Haere Rā\n\n(C)Whānau\n\n(D)Kai", "\n\n(2.) What Does \"Whānau\" Mean?\n\n(A)School\n\n(B)Family\n\n(C)Food\n\n(D)Friend", "\n\n(3.) What Is The Māori Word For \"Food\"?\n\n(A)Moana\n\n(B)Whare\n\n(C)Kai\n\n(D)Aroha", "\n\n(4.) What Does \"Aroha\" Mean?\n\n(A)Love\n\n(B)Water\n\n(C)Mountain\n\n(D)Bird", "\n\n(5.) What Is The Māori Word For \"House\"?\n\n(A)Whenua\n\n(B)Whare\n\n(C)Waka\n\n(D)Kura"};
-            Char[] easyAnswer = { 'A', 'B', 'C', 'A', 'B' };
-            String[] mediumQuestion = { "ANSWER THESE QUESTION BY ENTERING THE FOLLOWING LETTERS IN THE LIST\n----------------------------\n\n(1.) What Is The Meaning Of The Māori Word \"Mana\"?\n\n(A)Food\n\n(B)Prestige, Authority, Or Respect\n\n(C)Family\n\n(D)House", "\n\n(2.) What Is Marae Primarily Used For?\n\n(A)Fishing\n\n(B)Farming\n\n(C)Community Gatherings And Cultural Events\n\n(D)Transport", "\n\n(3.) Which Māori Word Means \"Land\"?\n\n(A)Whenua\n\n(B)Moana\n\n(C)Waka\n\n(D)Awa", "\n\n(4.) What Is The Purpose Of A Haka?\n\n(A)To Cook Food\n\n(B)To Welcome Visitors, Show Pride, Or Challenge Opponents\n\n(C)To Build Houses\n\n(D)To Travel Across Water", "\n\n(5.) Which Of These Is A Traditional Māori Canoe?\n\n(A)Marae\n\n(B)Pounamu\n\n(C)Waka\n\n(D)Taonga" };
-            Char[] mediumAnswer = { 'B', 'C', 'A', 'B', 'C' };
-            String[] hardQuestion = { "ANSWER THESE QUESTION BY ENTERING THE FOLLOWING LETTERS IN THE LIST\n----------------------------\n\n(1.) What Does The Concept Of \"Kaitiakitanga\" Refer To?\n\n(A)Leadership Over A Tribe\n\n(B)Guardianship And Protection Of The Environment\n\n(C)Traditional Māori Weapons\n\n(D)The Study Of Genealogy", "\n\n(2.) Which Of The Following Best Describes \"Whakapapa\"?\n\n(A)A Traditional Dance\n\n(B)A Type Of Meeting House\n\n(C)Genealogy And Connections Between People, Ancestors, And The Natural World\n\n(D)A Māori Fishing Method", "\n\n(3.) Why Is The Wharenui (Meeting House) Considered Important On A Marae?\n\n(A)It Is Mainly Used For Storing Food\n\n(B)It Represents Ancestors And Serves As A Place For Gathering\n\n(C)It Is Where Canoes Are Built\n\n(D)It Is Used Only For Visitors", "\n\n(4.) What Is The Main Purpose Of A Pōwhiri?\n\n(A)To Elect Leaders\n\n(B)To Prepare Food For Guests\n\n(C)To Officially Welcome Visitors Onto A Marae\n\n(D)To Celebrate A Successful Harvest", "\n\n(5.) Which Value Is Most Closely Associated With Showing Care, Hospitality, And Generosity To Others?\n\n(A)Manaakitanga\n\n(B)Rangatiratanga\n\n(C)Whakapapa\n\n(D)Tino Rangatiratanga" };
-            Char[] hardAnswer = { 'B','C','B','C','A' };
+            String[] easyQuestions = { "ANSWER THESE QUESTION BY ENTERING THE FOLLOWING LETTERS IN THE LIST\n----------------------------\n\n(1.) What Is The Māori Word For \"Hello\"?\n\n(A)Kia Ora\n\n(B)Haere Rā\n\n(C)Whānau\n\n(D)Kai", "\n\n(2.) What Does \"Whānau\" Mean?\n\n(A)School\n\n(B)Family\n\n(C)Food\n\n(D)Friend", "\n\n(3.) What Is The Māori Word For \"Food\"?\n\n(A)Moana\n\n(B)Whare\n\n(C)Kai\n\n(D)Aroha", "\n\n(4.) What Does \"Aroha\" Mean?\n\n(A)Love\n\n(B)Water\n\n(C)Mountain\n\n(D)Bird", "\n\n(5.) What Is The Māori Word For \"House\"?\n\n(A)Whenua\n\n(B)Whare\n\n(C)Waka\n\n(D)Kura"};
+            Char[] easyAnswers = { 'A', 'B', 'C', 'A', 'B' };
+            String[] mediumQuestions = { "ANSWER THESE QUESTION BY ENTERING THE FOLLOWING LETTERS IN THE LIST\n----------------------------\n\n(1.) What Is The Meaning Of The Māori Word \"Mana\"?\n\n(A)Food\n\n(B)Prestige, Authority, Or Respect\n\n(C)Family\n\n(D)House", "\n\n(2.) What Is Marae Primarily Used For?\n\n(A)Fishing\n\n(B)Farming\n\n(C)Community Gatherings And Cultural Events\n\n(D)Transport", "\n\n(3.) Which Māori Word Means \"Land\"?\n\n(A)Whenua\n\n(B)Moana\n\n(C)Waka\n\n(D)Awa", "\n\n(4.) What Is The Purpose Of A Haka?\n\n(A)To Cook Food\n\n(B)To Welcome Visitors, Show Pride, Or Challenge Opponents\n\n(C)To Build Houses\n\n(D)To Travel Across Water", "\n\n(5.) Which Of These Is A Traditional Māori Canoe?\n\n(A)Marae\n\n(B)Pounamu\n\n(C)Waka\n\n(D)Taonga" };
+            Char[] mediumAnswers = { 'B', 'C', 'A', 'B', 'C' };
+            String[] hardQuestions = { "ANSWER THESE QUESTION BY ENTERING THE FOLLOWING LETTERS IN THE LIST\n----------------------------\n\n(1.) What Does The Concept Of \"Kaitiakitanga\" Refer To?\n\n(A)Leadership Over A Tribe\n\n(B)Guardianship And Protection Of The Environment\n\n(C)Traditional Māori Weapons\n\n(D)The Study Of Genealogy", "\n\n(2.) Which Of The Following Best Describes \"Whakapapa\"?\n\n(A)A Traditional Dance\n\n(B)A Type Of Meeting House\n\n(C)Genealogy And Connections Between People, Ancestors, And The Natural World\n\n(D)A Māori Fishing Method", "\n\n(3.) Why Is The Wharenui (Meeting House) Considered Important On A Marae?\n\n(A)It Is Mainly Used For Storing Food\n\n(B)It Represents Ancestors And Serves As A Place For Gathering\n\n(C)It Is Where Canoes Are Built\n\n(D)It Is Used Only For Visitors", "\n\n(4.) What Is The Main Purpose Of A Pōwhiri?\n\n(A)To Elect Leaders\n\n(B)To Prepare Food For Guests\n\n(C)To Officially Welcome Visitors Onto A Marae\n\n(D)To Celebrate A Successful Harvest", "\n\n(5.) Which Value Is Most Closely Associated With Showing Care, Hospitality, And Generosity To Others?\n\n(A)Manaakitanga\n\n(B)Rangatiratanga\n\n(C)Whakapapa\n\n(D)Tino Rangatiratanga" };
+            Char[] hardAnswers = { 'B','C','B','C','A' };
+            String[] ImpossibleQuestions = { "ANSWER THESE QUESTION BY ENTERING THE FOLLOWING LETTERS IN THE LIST\n----------------------------\n\n(1.) Which Principle Best Reflects The Concept Of \"Tino Rangatiratanga\"?\n\n(A)Shared Ownership Of Resources\n\n(B)The Right Of Māori To Self-Determination And Leadership Over Their Affairs\n\n(C)Respect For Elders\n\n(D)Protection Of Native Wildlife",  "\n\n(2.) What Was The Primary Purpose Of Te Tiriti O Waitangi As Understood By Many Māori Signatories In 1840?\n\n(A)To Transfer Complete Sovereignty To The British Crown\n\n(B)To Establish A New Trading System\n\n(C)To Allow The Crown To Govern While Māori Retained Authority Over Their Own Affairs\n\n(D)To Create A Māori Parliament", "\n\n(3.) Which Of The Following Best Describes The Relationship Between Whakapapa And Identity?\n\n(A)Whakapapa Is Only Used To Trace Family Trees\n\n(B)Whakapapa Connects Individuals To Ancestors, Communities, Land, And The Spiritual World\n\n(C)Whakapapa Refers To Traditional Māori Laws\n\n(D)Whakapapa Is A Form Of Oral Storytelling",  "\n\n(4.) What Is The Significance Of The Carvings Found Within A Wharenui?\n\n(A)They Are Primarily Decorative Features\n\n(B)They Represent Historical Battles Only\n\n(C)They Symbolise Ancestors And Preserve Tribal Histories And Values\n\n(D)They Indicate The Age Of The Marae",  "\n\n(5.) Which Of The Following Is The Best Example Of Kaitiakitanga In Practice?\n\n(A)Selling Tribal Land For Economic Growth\n\n(B)Restricting Access To Natural Resources To Ensure Their Long-Term Sustainability\n\n(C)Expanding Urban Development Into Protected Areas\n\n(D)Importing Foreign Species To Increase Biodiversity" };
 
-            string name;
-            char quizDificultly, replay, choiceConfirmation;
+            string names;
+            char quizDifficultly, replay, choiceConfirmation;
             int totalPoints;
             choiceConfirmation = 'N';
 
@@ -28,7 +24,7 @@ namespace MaoriQuiz
 
 
             // User enters their name which is stored in the string name
-            name = inputName();
+            names = inputName();
 
             // User is asked a question whether he wants to do a quiz
             Console.Write("\nDo You Want To Do A Quiz? (Y/N):" + " ");
@@ -49,8 +45,8 @@ namespace MaoriQuiz
                     // if the user is not ensure whether they want to that quiz difficulty. Choice confirmation allows the user that they could undo their choice by going back to quizdifficulty.
                     do
                     {
-                        quizDificultly = displayChoice();
-                        switch (quizDificultly)
+                        quizDifficultly = displayChoice();
+                        switch (quizDifficultly)
                         {
 
                             case 'E':
@@ -61,7 +57,7 @@ namespace MaoriQuiz
                                     // If the user chooses Y, then the method continues, else it stops.
                                     if (choiceConfirmation == 'Y')
                                     {
-                                        displayQuestions(easyQuestion, easyAnswer); 
+                                        displayQuestions(easyQuestions, easyAnswers); 
                                     }
                                 }
                                 break;
@@ -72,7 +68,7 @@ namespace MaoriQuiz
                                     choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
                                     if (choiceConfirmation == 'Y')
                                     {
-                                        displayQuestions(mediumQuestion, mediumAnswer);
+                                        displayQuestions(mediumQuestions, mediumAnswers);
                                     }
                                 }
                                 break;
@@ -83,7 +79,7 @@ namespace MaoriQuiz
                                     choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
                                     if (choiceConfirmation == 'Y')
                                     {
-                                        displayQuestions(hardQuestion, hardAnswer);
+                                        displayQuestions(hardQuestions, hardAnswers);
                                     }
                                 }
                                 break;
@@ -151,14 +147,14 @@ namespace MaoriQuiz
         static char displayChoice()
         {
             // This code allows user to choose between the dificulty they want to do
-            Console.WriteLine("\nSelect Dificulty:\n\nEasy (E)\n\nMedium (M)\n\nHard (H)\n\nImpossible (I)\n");
+            Console.WriteLine("\nSelect Difficulty:\n\nEasy (E)\n\nMedium (M)\n\nHard (H)\n\nImpossible (I)\n");
             char quizDificulty = Console.ReadLine().ToUpper()[0];
             return quizDificulty;
         }
 
         static int displayQuestions(String[] inQuestion, Char[] correctAnswer)
         {
-            int totalPoints = 1;
+            int totalPoints = 0;
             for (int i = 0; i < inQuestion.Length; i++)
             {
                 // This question displays the question based on the quick dificulty
@@ -166,7 +162,8 @@ namespace MaoriQuiz
                 char answer = Console.ReadLine().ToUpper()[0];
                 if (answer == correctAnswer[i])
                 {
-                     Console.WriteLine($"Congrats You Got The Correct Answer; You Have Received 1 Point. Making Your Total {totalPoints++} Point");
+                    totalPoints++;
+                     Console.WriteLine($"Congrats You Got The Correct Answer; You Have Received 1 Point. Making Your Total {totalPoints} Point");
                 }
                 else
                 {
