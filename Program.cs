@@ -16,7 +16,6 @@ namespace MaoriQuiz
 
             string names;
             char quizDifficultly, replay, choiceConfirmation;
-            int totalPoints;
             choiceConfirmation = 'N';
 
 
@@ -58,7 +57,7 @@ namespace MaoriQuiz
                                     // If the user chooses Y, then the method continues, else it stops.
                                     if (choiceConfirmation == 'Y')
                                     {
-                                        displayQuestions(easyQuestions, easyAnswers); 
+                                        displayQuestions(easyQuestions, easyAnswers);
                                     }
                                 }
                                 break;
@@ -103,8 +102,6 @@ namespace MaoriQuiz
                         }
 
                     } while (choiceConfirmation == 'N');
-
-                    Console.WriteLine($"Congrats, You Got ");
                     Console.WriteLine("Do You Want To Play Again? (Y/N)");
                     replay = Console.ReadLine()[0];
                 } while (replay == 'Y');
@@ -145,7 +142,6 @@ namespace MaoriQuiz
             Console.WriteLine("----------------------------");
 
             return firstName;
-            return lastName;
 
 
         }
@@ -160,6 +156,8 @@ namespace MaoriQuiz
         static int displayQuestions(String[] inQuestion, Char[] correctAnswer)
         {
             int totalPoints = 0;
+            string names;
+
             for (int i = 0; i < inQuestion.Length; i++)
             {
                 // This question displays the question based on the quick dificulty
@@ -174,8 +172,8 @@ namespace MaoriQuiz
                 {
                     Console.WriteLine($"Incorrect, The Correct Answer Was {correctAnswer[i]}");
                 }
-                
             }
+            Console.WriteLine($"Congrats, You Got {totalPoints} Points. ");
             return totalPoints;
         }
     }
