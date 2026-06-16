@@ -173,7 +173,9 @@ namespace MaoriQuiz
                     Console.WriteLine($"Incorrect, The Correct Answer Was {correctAnswer[i]}");
                 }
             }
-            Console.WriteLine($"Congrats, You Got {totalPoints} Points. ");
+            decimal decimalPoints = (totalPoints / 100);
+            string percentage = decimalPoints.ToString("P2");
+            Console.WriteLine($"Congrats, You Got {totalPoints} Points. That Means Out Of The 5 Questions, You Answered {percentage} Correctly.");
             return totalPoints;
         }
     }
