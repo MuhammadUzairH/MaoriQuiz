@@ -28,7 +28,7 @@ namespace MaoriQuiz
 
             // User is asked a question whether he wants to do a quiz
             Console.Write("\nDo You Want To Do A Quiz? (Y/N):" + " ");
-            string startQuestion = Console.ReadLine();
+            string startQuestion = Console.ReadLine().ToUpper();
 
             // If the output is not yes
             if (startQuestion != "Y")
@@ -57,7 +57,7 @@ namespace MaoriQuiz
                                     // If the user chooses Y, then the method continues, else it stops.
                                     if (choiceConfirmation == 'Y')
                                     {
-                                        displayQuestions(easyQuestions, easyAnswers);
+                                        displayQuestions(easyQuestions, easyAnswers, names);
                                     }
                                 }
                                 break;
@@ -68,7 +68,7 @@ namespace MaoriQuiz
                                     choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
                                     if (choiceConfirmation == 'Y')
                                     {
-                                        displayQuestions(mediumQuestions, mediumAnswers);
+                                        displayQuestions(mediumQuestions, mediumAnswers,names);
                                     }
                                 }
                                 break;
@@ -79,7 +79,7 @@ namespace MaoriQuiz
                                     choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
                                     if (choiceConfirmation == 'Y')
                                     {
-                                        displayQuestions(hardQuestions, hardAnswers);
+                                        displayQuestions(hardQuestions, hardAnswers,names);
                                     }
                                 }
                                 break;
@@ -90,7 +90,7 @@ namespace MaoriQuiz
                                     choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
                                     if (choiceConfirmation == 'Y')
                                     {
-                                        displayQuestions(impossibleQuestions, impossibleAnswers);
+                                        displayQuestions(impossibleQuestions, impossibleAnswers, names);
                                     }
                                 }
                                 break;
@@ -108,10 +108,10 @@ namespace MaoriQuiz
             }
         }
         // This is the welcome page
-        static void displayWelcome(string nsg)
+        static void displayWelcome(string msg)
         {
             Console.WriteLine("Welcome To The Quiz");
-            Console.WriteLine(nsg);
+            Console.WriteLine(msg);
         }
         static string inputName()
         {
@@ -153,10 +153,9 @@ namespace MaoriQuiz
             return quizDificulty;
         }
 
-        static int displayQuestions(String[] inQuestion, Char[] correctAnswer)
+        static int displayQuestions(String[] inQuestion, Char[] correctAnswer, string userName)
         {
             int totalPoints = 0;
-            string names;
 
             for (int i = 0; i < inQuestion.Length; i++)
             {
@@ -173,9 +172,8 @@ namespace MaoriQuiz
                     Console.WriteLine($"Incorrect, The Correct Answer Was {correctAnswer[i]}");
                 }
             }
-            decimal decimalPoints = (totalPoints / 100);
-            string percentage = decimalPoints.ToString("P2");
-            Console.WriteLine($"Congrats, You Got {totalPoints} Points. That Means Out Of The 5 Questions, You Answered {percentage} Correctly.");
+            decimal decimalPoints = (totalPoints / 5) * 100;
+            Console.WriteLine($"Congrats, {userName} You Got {totalPoints} Points. That Means Out Of The 5 Questions, You Answered {decimalPoints:F1}% Correctly.");
             return totalPoints;
         }
     }
