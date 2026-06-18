@@ -16,7 +16,7 @@ namespace MaoriQuiz
 
             string names;
             char quizDifficultly, replay, choiceConfirmation;
-            choiceConfirmation = 'N';
+            choiceConfirmation = ' ';
 
 
             // Welcome page
@@ -101,9 +101,9 @@ namespace MaoriQuiz
                                 break;
                         }
 
-                    } while (choiceConfirmation == 'N');
+                    } while (choiceConfirmation != 'Y');
                     Console.WriteLine("Do You Want To Play Again? (Y/N)");
-                    replay = Console.ReadLine()[0];
+                    replay = Console.ReadLine().ToUpper()[0];
                 } while (replay == 'Y');
             }
         }
@@ -117,24 +117,24 @@ namespace MaoriQuiz
         {
             // This is the code where the user input their first name 
             Console.Write("\nPlease Enter Your First Name:" + " ");
-            string firstName = Convert.ToString(Console.ReadLine());
+            string firstName = Console.ReadLine().ToUpper();
 
             while ((firstName.Length < 3) || (firstName.Length > 20) || (!firstName.All(char.IsLetter)))
             {
                 Console.WriteLine("\nInvalid First Name\n(You Had Incorrectly Wrote Your First Name Wrong. Name Has To Be Atleast 3 Characters And Less Than 20 Characters.\nFirst Name Cannot Contain Any Space Or Any Symbols And Is Required To Just Input Your First Name.)");
                 Console.Write("\nPlease Enter Your First Name:" + " ");
-                firstName = Convert.ToString(Console.ReadLine());
+                firstName = Console.ReadLine().ToUpper();
 
             }
 
             // This is the code where the user input their last name
             Console.Write("\nPlease Enter Your Last Name:" + " ");
-            string lastName = Convert.ToString(Console.ReadLine());
+            string lastName = Console.ReadLine().ToUpper();
             while ((lastName.Length < 3) || (lastName.Length > 20) || (!lastName.All(char.IsLetter)))
             {
                 Console.WriteLine("\nInvalid Last Name\n(You Had Incorrectly Wrote Your Last Name Wrong. Name Has To Be Atleast 3 Characters And Less Than 20 Characters.\nLast Name Cannot Contain Any Space Or Any Symbols And Is Required To Just Input Your Last Name.");
-                Console.WriteLine("\nPlease Enter Your Last Name:" + " ");
-                lastName = Convert.ToString(Console.ReadLine());
+                Console.Write("\nPlease Enter Your Last Name:" + " ");
+                lastName = Console.ReadLine().ToUpper();
 
             }
 
@@ -156,22 +156,21 @@ namespace MaoriQuiz
         static int displayQuestions(String[] inQuestion, Char[] correctAnswer, string userName)
         {
             int totalPoints = 0;
-
-            for (int i = 0; i < inQuestion.Length; i++)
-            {
-                // This question displays the question based on the quick dificulty
-                Console.WriteLine(inQuestion[i]);
-                char answer = Console.ReadLine().ToUpper()[0];
-                if (answer == correctAnswer[i])
+                for (int i = 0; i < inQuestion.Length; i++)
                 {
-                    totalPoints++;
-                     Console.WriteLine($"Congrats You Got The Correct Answer; You Have Received 1 Point. Making Your Total {totalPoints} Point");
+                    // This question displays the question based on the quick dificulty
+                    Console.WriteLine(inQuestion[i]);
+                    char answer = Console.ReadLine().ToUpper()[0];
+                    if (answer == correctAnswer[i])
+                    {
+                        totalPoints++;
+                        Console.WriteLine($"Congrats You Got The Correct Answer; You Have Received 1 Point. Making Your Total {totalPoints} Point");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Incorrect, The Correct Answer Was {correctAnswer[i]}");
+                    }
                 }
-                else
-                {
-                    Console.WriteLine($"Incorrect, The Correct Answer Was {correctAnswer[i]}");
-                }
-            }
             double decimalPoints = (totalPoints / 5.0) * 100;
             Console.WriteLine($"Congrats, {userName} You Got {totalPoints} Points. That Means Out Of The 5 Questions, You Answered {decimalPoints:F1}% Correctly.");
             return totalPoints;
