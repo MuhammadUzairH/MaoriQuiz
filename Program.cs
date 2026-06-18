@@ -14,8 +14,8 @@ namespace MaoriQuiz
             String[] impossibleQuestions = { "ANSWER THESE QUESTION BY ENTERING THE FOLLOWING LETTERS IN THE LIST\n----------------------------\n\n(1.) Which Principle Best Reflects The Concept Of \"Tino Rangatiratanga\"?\n\n(A)Shared Ownership Of Resources\n\n(B)The Right Of Māori To Self-Determination And Leadership Over Their Affairs\n\n(C)Respect For Elders\n\n(D)Protection Of Native Wildlife",  "\n\n(2.) What Was The Primary Purpose Of Te Tiriti O Waitangi As Understood By Many Māori Signatories In 1840?\n\n(A)To Transfer Complete Sovereignty To The British Crown\n\n(B)To Establish A New Trading System\n\n(C)To Allow The Crown To Govern While Māori Retained Authority Over Their Own Affairs\n\n(D)To Create A Māori Parliament", "\n\n(3.) Which Of The Following Best Describes The Relationship Between Whakapapa And Identity?\n\n(A)Whakapapa Is Only Used To Trace Family Trees\n\n(B)Whakapapa Connects Individuals To Ancestors, Communities, Land, And The Spiritual World\n\n(C)Whakapapa Refers To Traditional Māori Laws\n\n(D)Whakapapa Is A Form Of Oral Storytelling",  "\n\n(4.) What Is The Significance Of The Carvings Found Within A Wharenui?\n\n(A)They Are Primarily Decorative Features\n\n(B)They Represent Historical Battles Only\n\n(C)They Symbolise Ancestors And Preserve Tribal Histories And Values\n\n(D)They Indicate The Age Of The Marae",  "\n\n(5.) Which Of The Following Is The Best Example Of Kaitiakitanga In Practice?\n\n(A)Selling Tribal Land For Economic Growth\n\n(B)Restricting Access To Natural Resources To Ensure Their Long-Term Sustainability\n\n(C)Expanding Urban Development Into Protected Areas\n\n(D)Importing Foreign Species To Increase Biodiversity" };
             Char[] impossibleAnswers = {'B','C','B','C','B' };
 
-            string names;
-            char quizDifficultly, replay, choiceConfirmation;
+            string names,inputClarification,inputConfirmation;
+            char quizDifficultly, replay, choiceConfirmation,startQuestion;
             choiceConfirmation = ' ';
 
 
@@ -27,86 +27,132 @@ namespace MaoriQuiz
             names = inputName();
 
             // User is asked a question whether he wants to do a quiz
-            Console.Write("\nDo You Want To Do A Quiz? (Y/N):" + " ");
-            string startQuestion = Console.ReadLine().ToUpper();
-
-            // If the output is not yes
-            if (startQuestion != "Y")
+            do
             {
-                Console.WriteLine("\nOkay");
+                Console.Write("\nDo You Want To Do A Quiz? (Y/N):" + " ");
+                inputClarification = Console.ReadLine().ToUpper();
 
-            }
-            // Displaying question and the difficulty the user sets it to be.
-            else
-            {
-                // This do loop would let the user to replay the quiz if they want to play again.
-                do
+
+                // If the output is not yes
+                if (inputClarification != "N" && inputClarification != "Y")
                 {
-                    // if the user is not ensure whether they want to that quiz difficulty. Choice confirmation allows the user that they could undo their choice by going back to quizdifficulty.
+                    Console.WriteLine("Invalid Input. User Must Only Enter Y/N (Yes/No)");
+
+                }
+                else if (inputClarification == "N")
+                {
+                    Console.WriteLine("\nOkay");
+                }
+                else if (inputClarification == "Y")
+                {
+
+                startQuestion = inputClarification[0];
+                
+
+                    // This do loop would let the user to replay the quiz if they want to play again.
                     do
                     {
-                        quizDifficultly = displayChoice();
-                        switch (quizDifficultly)
+                        // if the user is not ensure whether they want to that quiz difficulty. Choice confirmation allows the user that they could undo their choice by going back to quizdifficulty.
+                        do
                         {
+                            quizDifficultly = displayChoice();
+                            // Displaying question and the difficulty the user sets it to be.
+                            switch (quizDifficultly)
+                            {
 
-                            case 'E':
-                                {
-                                    //the easiest quiz
-                                    Console.Write("\nAre You Sure You Want To Do Easy Mode? (Y/N):");
-                                    choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
-                                    // If the user chooses Y, then the method continues, else it stops.
-                                    if (choiceConfirmation == 'Y')
+                                case 'E':
                                     {
-                                        displayQuestions(easyQuestions, easyAnswers, names);
-                                    }
-                                }
-                                break;
-                            case 'M':
-                                {
-                                    // the medium quiz
-                                    Console.Write("\nAre You Sure You Want To Do Medium Mode? (Y/N):");
-                                    choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
-                                    if (choiceConfirmation == 'Y')
-                                    {
-                                        displayQuestions(mediumQuestions, mediumAnswers,names);
-                                    }
-                                }
-                                break;
-                            case 'H':
-                                {
-                                    // the 2nd hardest quiz
-                                    Console.Write("\nAre You Sure You Want To Do Hard Mode? (Y/N):");
-                                    choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
-                                    if (choiceConfirmation == 'Y')
-                                    {
-                                        displayQuestions(hardQuestions, hardAnswers,names);
-                                    }
-                                }
-                                break;
-                            case 'I':
-                                {
-                                    // the most most hardest quiz
-                                    Console.Write("\nAre You Sure You Want To Do Impossible Mode? (Y/N):");
-                                    choiceConfirmation = Convert.ToChar(Console.ReadLine().ToUpper());
-                                    if (choiceConfirmation == 'Y')
-                                    {
-                                        displayQuestions(impossibleQuestions, impossibleAnswers, names);
-                                    }
-                                }
-                                break;
-                            default:
-                                {
-                                    Console.Write("\nInvalid Option");
-                                }
-                                break;
-                        }
+                                        //the easiest quiz
+                                        Console.Write("\nAre You Sure You Want To Do Easy Mode? (Y/N):");
+                                        // If the user chooses Y, then the method continues, else it stops.
+                                       inputConfirmation = Console.ReadLine().ToUpper();
 
-                    } while (choiceConfirmation != 'Y');
-                    Console.WriteLine("Do You Want To Play Again? (Y/N)");
-                    replay = Console.ReadLine().ToUpper()[0];
-                } while (replay == 'Y');
-            }
+                                       while (inputConfirmation != "Y" && inputConfirmation != "N")
+                                       {
+                                           Console.WriteLine("Invalid Input. User Must Only Enter Y/N (Yes/No)");
+                                           inputConfirmation = Console.ReadLine().ToUpper();
+                                       }
+
+                                       choiceConfirmation = inputConfirmation[0];
+                                        if (choiceConfirmation == 'Y')
+                                        {
+                                            displayQuestions(easyQuestions, easyAnswers, names);
+                                        }
+                            }
+                            break;
+                                case 'M':
+                                    {
+                                        // the medium quiz
+                                        Console.Write("\nAre You Sure You Want To Do Medium Mode? (Y/N):");
+                                        inputConfirmation = Console.ReadLine().ToUpper();
+
+                                        while (inputConfirmation != "Y" && inputConfirmation != "N")
+                                        {
+                                            Console.WriteLine("Invalid Input. User Must Only Enter Y/N (Yes/No)");
+                                            inputConfirmation = Console.ReadLine().ToUpper();
+                                        }
+
+                                        choiceConfirmation = inputConfirmation[0];
+                                        if (choiceConfirmation == 'Y')
+                                        {
+                                            displayQuestions(mediumQuestions, mediumAnswers, names);
+                                        }
+                                    }
+                                    break;
+                                case 'H':
+                                    {
+                                        // the 2nd hardest quiz
+                                        Console.Write("\nAre You Sure You Want To Do Hard Mode? (Y/N):");
+                                        inputConfirmation = Console.ReadLine().ToUpper();
+
+                                        while (inputConfirmation != "Y" && inputConfirmation != "N")
+                                        {
+                                            Console.WriteLine("Invalid Input. User Must Only Enter Y/N (Yes/No)");
+                                            inputConfirmation = Console.ReadLine().ToUpper();
+                                        }
+
+                                        choiceConfirmation = inputConfirmation[0];
+                                        if (choiceConfirmation == 'Y')
+                                        {
+                                            displayQuestions(hardQuestions, hardAnswers, names);
+                                        }
+                                    }
+                                    break;
+                                case 'I':
+                                    {
+                                        // the most most hardest quiz
+                                        Console.Write("\nAre You Sure You Want To Do Impossible Mode? (Y/N):");
+                                        inputConfirmation = Console.ReadLine().ToUpper();
+
+
+                                        while (inputConfirmation != "Y" && inputConfirmation != "N")
+                                        {
+                                            Console.WriteLine("Invalid Input. User Must Only Enter Y/N (Yes/No)");
+                                            inputConfirmation = Console.ReadLine().ToUpper();
+                                        }
+
+                                        choiceConfirmation = inputConfirmation[0];
+                                        if (choiceConfirmation == 'Y')
+                                        {
+                                            displayQuestions(impossibleQuestions, impossibleAnswers, names);
+                                        }
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.Write("\nInvalid Option");
+                                    }
+                                    break;
+                            }
+
+                        } while (choiceConfirmation == 'N');
+                        Console.WriteLine("Do You Want To Play Again? (Y/N)");
+                        replay = Console.ReadLine().ToUpper()[0];
+                    } while (replay == 'Y');
+                }
+            } while (inputClarification == "N");
         }
+        
         // This is the welcome page
         static void displayWelcome(string msg)
         {
