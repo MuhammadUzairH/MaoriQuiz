@@ -41,7 +41,7 @@ namespace MaoriQuiz
                 }
                 else if (inputClarification != "N" && inputClarification != "Y")
                 {
-                    Console.WriteLine("Invalid Input. User Must Only Enter Y/N (Yes/No)");
+                    Console.WriteLine("\nInvalid Input. User Must Only Enter Y/N (Yes/No)");
                 }
                 else if (inputClarification == "Y")
                 {
@@ -140,13 +140,13 @@ namespace MaoriQuiz
                                     break;
                                 default:
                                     {
-                                        Console.Write("\nInvalid Option");
+                                        Console.Write("\nUnexpecred Error");
                                     }
                                     break;
                             }
 
                         } while (choiceConfirmation == 'N');
-                        break;
+
                         Console.WriteLine("Do You Want To Play Again? (Y/N)");
                         replay = Console.ReadLine().ToUpper()[0];
                     } while (replay == 'Y');
@@ -196,14 +196,14 @@ namespace MaoriQuiz
         {
             // This code allows user to choose between the dificulty they want to do
             Console.WriteLine("\nSelect Difficulty:\n\nEasy (E)\n\nMedium (M)\n\nHard (H)\n\nImpossible (I)\n");
-            string inputquizdifficulty = Console.ReadLine().ToUpper();
-            while ((inputquizdifficulty.Length != 1) || (!inputquizdifficulty.All(char.IsLetter)) || inputquizdifficulty != "E" && inputquizdifficulty != "M" && inputquizdifficulty != "H" && inputquizdifficulty != "I")
+            string inputquizDifficulty = Console.ReadLine().ToUpper();
+            while ((inputquizDifficulty.Length != 1) || (!inputquizDifficulty.All(char.IsLetter)) || inputquizDifficulty != "E" && inputquizDifficulty != "M" && inputquizDifficulty != "H" && inputquizDifficulty != "I")
             {
                 Console.WriteLine("\nInvalid Option. You Have To Insert (E,M,H,I) Nothing else.");
-                inputquizdifficulty = Console.ReadLine().ToUpper();
+                inputquizDifficulty = Console.ReadLine().ToUpper();
                 
             }
-            char quizDifficulty = inputquizdifficulty[0];
+            char quizDifficulty = inputquizDifficulty[0];
             return quizDifficulty;
         }
 
@@ -214,7 +214,14 @@ namespace MaoriQuiz
                 {
                     // This question displays the question based on the quick dificulty
                     Console.WriteLine(inQuestion[i]);
-                    char answer = Console.ReadLine().ToUpper()[0];
+                    string inputAnswer = Console.ReadLine().ToUpper();
+
+                while (inputAnswer.Length != 1 ||inputAnswer != "A" && inputAnswer != "B" && inputAnswer != "C" && inputAnswer != "D")
+                {
+                    Console.WriteLine("Invalid Input. The Answer Has To Be Either, A,B,C,D. Any Other Answer Would Be Rejected.");
+                    inputAnswer = Console.ReadLine().ToUpper();
+                }
+                char answer = inputAnswer[0];
                     if (answer == correctAnswer[i])
                     {
                         totalPoints++;
