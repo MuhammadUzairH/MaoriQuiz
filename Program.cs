@@ -27,26 +27,25 @@ namespace MaoriQuiz
             names = inputName();
 
             // User is asked a question whether he wants to do a quiz
-            do
-            {
+
                 Console.Write("\nDo You Want To Do A Quiz? (Y/N):" + " ");
                 inputClarification = Console.ReadLine().ToUpper();
-
+                
 
                 // If the output is not yes
-                if (inputClarification == "N")
-                {
-                    Console.WriteLine("\nOkay");
-
-                }
-                else if (inputClarification != "N" && inputClarification != "Y")
+                while (inputClarification != "N" && inputClarification != "Y")
                 {
                     Console.WriteLine("\nInvalid Input. User Must Only Enter Y/N (Yes/No)");
+                    inputClarification = Console.ReadLine().ToUpper();
                 }
-                else if (inputClarification == "Y")
-                {
-
                 startQuestion = inputClarification[0];
+            if (startQuestion == 'N')
+                 {
+                 Console.WriteLine("\nOkay");
+
+                 }
+            if (startQuestion == 'Y')
+                {
                 
 
                     // This do loop would let the user to replay the quiz if they want to play again.
@@ -140,7 +139,7 @@ namespace MaoriQuiz
                                     break;
                                 default:
                                     {
-                                        Console.Write("\nUnexpecred Error");
+                                        Console.Write("\nUnexpected Error");
                                     }
                                     break;
                             }
@@ -148,10 +147,16 @@ namespace MaoriQuiz
                         } while (choiceConfirmation == 'N');
 
                         Console.WriteLine("Do You Want To Play Again? (Y/N)");
-                        replay = Console.ReadLine().ToUpper()[0];
+                        string inputReplay = Console.ReadLine().ToUpper();
+                        
+                        while (inputReplay.Length != 1 || inputReplay != "Y" && inputReplay != "N")
+                        {
+                            Console.WriteLine("\nInvalid Input. User Must Only Enter (Y/N) (Yes/No)");
+                            inputReplay = Console.ReadLine().ToUpper();
+                        }
+                        replay = inputReplay[0];
                     } while (replay == 'Y');
                 }
-            } while (inputClarification != "N");
         }
         
         // This is the welcome page
@@ -191,7 +196,7 @@ namespace MaoriQuiz
                 string nameClarification = Console.ReadLine().ToUpper();
                 while (nameClarification != "Y" && nameClarification != "N")
                 {
-                    Console.WriteLine("Invalid Input. The Answer Has To Be Either (Y/N) (Yes/No)");
+                    Console.WriteLine("\nInvalid Input. User Must Only Enter (Y/N) (Yes/No)");
                     nameClarification = Console.ReadLine().ToUpper();
                 }
                 invalidName = nameClarification[0];
@@ -200,7 +205,7 @@ namespace MaoriQuiz
                 {
                     Console.WriteLine($"\nI See, Your Name Is: {firstName + " " + lastName}");
                     Console.WriteLine("----------------------------");
-                    return firstName + "" + lastName;
+                    return firstName + " " + lastName;
                 }
 
             } while (invalidName == 'N');
