@@ -34,14 +34,14 @@ namespace MaoriQuiz
 
 
                 // If the output is not yes
-                if (inputClarification != "N" && inputClarification != "Y")
-                {
-                    Console.WriteLine("Invalid Input. User Must Only Enter Y/N (Yes/No)");
-
-                }
-                else if (inputClarification == "N")
+                if (inputClarification == "N")
                 {
                     Console.WriteLine("\nOkay");
+
+                }
+                else if (inputClarification != "N" && inputClarification != "Y")
+                {
+                    Console.WriteLine("Invalid Input. User Must Only Enter Y/N (Yes/No)");
                 }
                 else if (inputClarification == "Y")
                 {
@@ -69,7 +69,7 @@ namespace MaoriQuiz
 
                                        while (inputConfirmation != "Y" && inputConfirmation != "N")
                                        {
-                                           Console.WriteLine("Invalid Input. User Must Only Enter Y/N (Yes/No)");
+                                           Console.WriteLine("\nInvalid Input. User Must Only Enter Y/N (Yes/No)");
                                            inputConfirmation = Console.ReadLine().ToUpper();
                                        }
 
@@ -88,13 +88,13 @@ namespace MaoriQuiz
 
                                         while (inputConfirmation != "Y" && inputConfirmation != "N")
                                         {
-                                            Console.WriteLine("Invalid Input. User Must Only Enter Y/N (Yes/No)");
+                                            Console.WriteLine("\nInvalid Input. User Must Only Enter Y/N (Yes/No)");
                                             inputConfirmation = Console.ReadLine().ToUpper();
                                         }
 
                                         choiceConfirmation = inputConfirmation[0];
                                         if (choiceConfirmation == 'Y')
-                                        {
+                                        {                                                                                                                                                                                                                                                           
                                             displayQuestions(mediumQuestions, mediumAnswers, names);
                                         }
                                     }
@@ -107,7 +107,7 @@ namespace MaoriQuiz
 
                                         while (inputConfirmation != "Y" && inputConfirmation != "N")
                                         {
-                                            Console.WriteLine("Invalid Input. User Must Only Enter Y/N (Yes/No)");
+                                            Console.WriteLine("\nInvalid Input. User Must Only Enter Y/N (Yes/No)");
                                             inputConfirmation = Console.ReadLine().ToUpper();
                                         }
 
@@ -127,7 +127,7 @@ namespace MaoriQuiz
 
                                         while (inputConfirmation != "Y" && inputConfirmation != "N")
                                         {
-                                            Console.WriteLine("Invalid Input. User Must Only Enter Y/N (Yes/No)");
+                                            Console.WriteLine("\nInvalid Input. User Must Only Enter Y/N (Yes/No)");
                                             inputConfirmation = Console.ReadLine().ToUpper();
                                         }
 
@@ -146,11 +146,12 @@ namespace MaoriQuiz
                             }
 
                         } while (choiceConfirmation == 'N');
+                        break;
                         Console.WriteLine("Do You Want To Play Again? (Y/N)");
                         replay = Console.ReadLine().ToUpper()[0];
                     } while (replay == 'Y');
                 }
-            } while (inputClarification == "N");
+            } while (inputClarification != "N");
         }
         
         // This is the welcome page
@@ -195,8 +196,15 @@ namespace MaoriQuiz
         {
             // This code allows user to choose between the dificulty they want to do
             Console.WriteLine("\nSelect Difficulty:\n\nEasy (E)\n\nMedium (M)\n\nHard (H)\n\nImpossible (I)\n");
-            char quizDificulty = Console.ReadLine().ToUpper()[0];
-            return quizDificulty;
+            string inputquizdifficulty = Console.ReadLine().ToUpper();
+            while ((inputquizdifficulty.Length != 1) || (!inputquizdifficulty.All(char.IsLetter)) || inputquizdifficulty != "E" && inputquizdifficulty != "M" && inputquizdifficulty != "H" && inputquizdifficulty != "I")
+            {
+                Console.WriteLine("\nInvalid Option. You Have To Insert (E,M,H,I) Nothing else.");
+                inputquizdifficulty = Console.ReadLine().ToUpper();
+                
+            }
+            char quizDifficulty = inputquizdifficulty[0];
+            return quizDifficulty;
         }
 
         static int displayQuestions(String[] inQuestion, Char[] correctAnswer, string userName)
@@ -223,6 +231,7 @@ namespace MaoriQuiz
         }
     }
 }
+
         
     
 
