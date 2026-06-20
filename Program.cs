@@ -69,7 +69,7 @@ namespace MaoriQuiz
 
                                        while (inputConfirmation != "Y" && inputConfirmation != "N")
                                        {
-                                           Console.WriteLine("\nInvalid Input. User Must Only Enter Y/N (Yes/No)");
+                                           Console.WriteLine("\nInvalid Input. User Must Only Enter (Y/N) (Yes/No)");
                                            inputConfirmation = Console.ReadLine().ToUpper();
                                        }
 
@@ -88,7 +88,7 @@ namespace MaoriQuiz
 
                                         while (inputConfirmation != "Y" && inputConfirmation != "N")
                                         {
-                                            Console.WriteLine("\nInvalid Input. User Must Only Enter Y/N (Yes/No)");
+                                            Console.WriteLine("\nInvalid Input. User Must Only Enter (Y/N) (Yes/No)");
                                             inputConfirmation = Console.ReadLine().ToUpper();
                                         }
 
@@ -107,7 +107,7 @@ namespace MaoriQuiz
 
                                         while (inputConfirmation != "Y" && inputConfirmation != "N")
                                         {
-                                            Console.WriteLine("\nInvalid Input. User Must Only Enter Y/N (Yes/No)");
+                                            Console.WriteLine("\nInvalid Input. User Must Only Enter (Y/N) (Yes/No)");
                                             inputConfirmation = Console.ReadLine().ToUpper();
                                         }
 
@@ -127,7 +127,7 @@ namespace MaoriQuiz
 
                                         while (inputConfirmation != "Y" && inputConfirmation != "N")
                                         {
-                                            Console.WriteLine("\nInvalid Input. User Must Only Enter Y/N (Yes/No)");
+                                            Console.WriteLine("\nInvalid Input. User Must Only Enter (Y/N) (Yes/No)");
                                             inputConfirmation = Console.ReadLine().ToUpper();
                                         }
 
@@ -163,33 +163,48 @@ namespace MaoriQuiz
         static string inputName()
         {
             // This is the code where the user input their first name 
-            Console.Write("\nPlease Enter Your First Name:" + " ");
-            string firstName = Console.ReadLine().ToUpper();
-
-            while ((firstName.Length < 3) || (firstName.Length > 20) || (!firstName.All(char.IsLetter)))
+            char invalidName;
+            do
             {
-                Console.WriteLine("\nInvalid First Name\n(You Had Incorrectly Wrote Your First Name Wrong. Name Has To Be Atleast 3 Characters And Less Than 20 Characters.\nFirst Name Cannot Contain Any Space Or Any Symbols And Is Required To Just Input Your First Name.)");
                 Console.Write("\nPlease Enter Your First Name:" + " ");
-                firstName = Console.ReadLine().ToUpper();
+                string firstName = Console.ReadLine().ToUpper();
 
-            }
+                while ((firstName.Length < 3) || (firstName.Length > 20) || (!firstName.All(char.IsLetter)))
+                {
+                    Console.WriteLine("\nInvalid First Name\n(You Had Incorrectly Wrote Your First Name Wrong. Name Has To Be Atleast 3 Characters And Less Than 20 Characters.\nFirst Name Cannot Contain Any Space Or Any Symbols And Is Required To Just Input Your First Name.)");
+                    Console.Write("\nPlease Enter Your First Name:" + " ");
+                    firstName = Console.ReadLine().ToUpper();
 
-            // This is the code where the user input their last name
-            Console.Write("\nPlease Enter Your Last Name:" + " ");
-            string lastName = Console.ReadLine().ToUpper();
-            while ((lastName.Length < 3) || (lastName.Length > 20) || (!lastName.All(char.IsLetter)))
-            {
-                Console.WriteLine("\nInvalid Last Name\n(You Had Incorrectly Wrote Your Last Name Wrong. Name Has To Be Atleast 3 Characters And Less Than 20 Characters.\nLast Name Cannot Contain Any Space Or Any Symbols And Is Required To Just Input Your Last Name.");
+                }
+
+                // This is the code where the user input their last name
                 Console.Write("\nPlease Enter Your Last Name:" + " ");
-                lastName = Console.ReadLine().ToUpper();
+                string lastName = Console.ReadLine().ToUpper();
+                while ((lastName.Length < 3) || (lastName.Length > 20) || (!lastName.All(char.IsLetter)))
+                {
+                    Console.WriteLine("\nInvalid Last Name\n(You Had Incorrectly Wrote Your Last Name Wrong. Name Has To Be Atleast 3 Characters And Less Than 20 Characters.\nLast Name Cannot Contain Any Space Or Any Symbols And Is Required To Just Input Your Last Name.");
+                    Console.Write("\nPlease Enter Your Last Name:" + " ");
+                    lastName = Console.ReadLine().ToUpper();
 
-            }
+                }
+                Console.WriteLine($"Are You Sure Your Name Is {firstName + " " + lastName}? (Y/N)");
+                string nameClarification = Console.ReadLine().ToUpper();
+                while (nameClarification != "Y" && nameClarification != "N")
+                {
+                    Console.WriteLine("Invalid Input. The Answer Has To Be Either (Y/N) (Yes/No)");
+                    nameClarification = Console.ReadLine().ToUpper();
+                }
+                invalidName = nameClarification[0];
 
-            Console.WriteLine($"\nI See, Your Name Is: {firstName + " " + lastName}");
-            Console.WriteLine("----------------------------");
+                if (invalidName == 'Y')
+                {
+                    Console.WriteLine($"\nI See, Your Name Is: {firstName + " " + lastName}");
+                    Console.WriteLine("----------------------------");
+                    return firstName + "" + lastName;
+                }
 
-            return firstName;
-
+            } while (invalidName == 'N');
+            return "";
 
         }
         static char displayChoice()
@@ -197,7 +212,7 @@ namespace MaoriQuiz
             // This code allows user to choose between the dificulty they want to do
             Console.WriteLine("\nSelect Difficulty:\n\nEasy (E)\n\nMedium (M)\n\nHard (H)\n\nImpossible (I)\n");
             string inputquizDifficulty = Console.ReadLine().ToUpper();
-            while ((inputquizDifficulty.Length != 1) || (!inputquizDifficulty.All(char.IsLetter)) || inputquizDifficulty != "E" && inputquizDifficulty != "M" && inputquizDifficulty != "H" && inputquizDifficulty != "I")
+            while ((inputquizDifficulty.Length != 1) || inputquizDifficulty != "E" && inputquizDifficulty != "M" && inputquizDifficulty != "H" && inputquizDifficulty != "I")
             {
                 Console.WriteLine("\nInvalid Option. You Have To Insert (E,M,H,I) Nothing else.");
                 inputquizDifficulty = Console.ReadLine().ToUpper();
