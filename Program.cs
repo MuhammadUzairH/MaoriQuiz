@@ -38,15 +38,15 @@ namespace MaoriQuiz
 
                 Console.Write("\nDo You Want To Do A Quiz? (Y/N):" + " ");
                 inputClarification = Console.ReadLine().ToUpper();
-                
 
-                // This code would make it so that anything other than the letter N and Y would not be accepted.
-                while (inputClarification != "N" && inputClarification != "Y")
+
+            // This code would make it so that anything other than the letter N and Y would not be accepted.
+            startQuestion = inputClarification[0];
+            while (startQuestion != 'N' && startQuestion != 'Y')
                 {
                     Console.WriteLine("\nInvalid Input. User Must Only Enter Y/N (Yes/No)");
                     inputClarification = Console.ReadLine().ToUpper();
                 }
-                startQuestion = inputClarification[0];
             // Code ends as user does not want to do a quiz
             if (startQuestion == 'N')
                  {
@@ -75,15 +75,15 @@ namespace MaoriQuiz
                                         Console.Write("\nAre You Sure You Want To Do Easy Mode? (Y/N):");
                                         // It is asking if are sure that this is the correct difficulty that they want to do. If its 'N' then the code foes back to quizDifficulty. If its not, then the method continues.
                                        inputConfirmation = Console.ReadLine().ToUpper();
+                                    choiceConfirmation = inputConfirmation[0];
 
                                     // This code would make it so that anything other than the letter N and Y would not be accepted.
-                                    while (inputConfirmation != "Y" && inputConfirmation != "N")
+                                    while (choiceConfirmation != 'Y' && choiceConfirmation != 'N')
                                        {
                                            Console.WriteLine("\nInvalid Input. User Must Only Enter (Y/N) (Yes/No)");
                                            inputConfirmation = Console.ReadLine().ToUpper();
                                        }
 
-                                       choiceConfirmation = inputConfirmation[0];
                                     // If the user chooses Y, then the method continues, else it stops.
                                     if (choiceConfirmation == 'Y')
                                         {
@@ -97,9 +97,10 @@ namespace MaoriQuiz
                                         Console.Write("\nAre You Sure You Want To Do Medium Mode? (Y/N):");
                                     // It is asking if are sure that this is the correct difficulty that they want to do. If its 'N' then the code foes back to quizDifficulty. If its not, then the method continues.
                                     inputConfirmation = Console.ReadLine().ToUpper();
+                                    choiceConfirmation = inputConfirmation[0];
 
                                     // This code would make it so that anything other than the letter N and Y would not be accepted.
-                                    while (inputConfirmation != "Y" && inputConfirmation != "N")
+                                    while (choiceConfirmation != 'Y' && choiceConfirmation != 'N')
                                         {
                                             Console.WriteLine("\nInvalid Input. User Must Only Enter (Y/N) (Yes/No)");
                                             inputConfirmation = Console.ReadLine().ToUpper();
@@ -119,15 +120,16 @@ namespace MaoriQuiz
                                         Console.Write("\nAre You Sure You Want To Do Hard Mode? (Y/N):");
                                     // It is asking if are sure that this is the correct difficulty that they want to do. If its 'N' then the code foes back to quizDifficulty. If its not, then the method continues.
                                     inputConfirmation = Console.ReadLine().ToUpper();
+                                    choiceConfirmation = inputConfirmation[0];
 
                                     // This code would make it so that anything other than the letter N and Y would not be accepted.
-                                    while (inputConfirmation != "Y" && inputConfirmation != "N")
+                                    while (choiceConfirmation != 'Y' && choiceConfirmation != 'N')
                                         {
                                             Console.WriteLine("\nInvalid Input. User Must Only Enter (Y/N) (Yes/No)");
                                             inputConfirmation = Console.ReadLine().ToUpper();
                                         }
 
-                                        choiceConfirmation = inputConfirmation[0];
+                                        
                                     // If the user chooses Y, then the method continues, else it stops.
                                     if (choiceConfirmation == 'Y')
                                         {
@@ -141,15 +143,15 @@ namespace MaoriQuiz
                                         Console.Write("\nAre You Sure You Want To Do Impossible Mode? (Y/N):");
                                     // It is asking if are sure that this is the correct difficulty that they want to do. If its 'N' then the code foes back to quizDifficulty. If its not, then the method continues.
                                     inputConfirmation = Console.ReadLine().ToUpper();
-
+                                    choiceConfirmation = inputConfirmation[0];
                                     // This code would make it so that anything other than the letter N and Y would not be accepted.
-                                    while (inputConfirmation != "Y" && inputConfirmation != "N")
+                                    while (choiceConfirmation != 'Y' && choiceConfirmation != 'N')
                                         {
                                             Console.WriteLine("\nInvalid Input. User Must Only Enter (Y/N) (Yes/No)\n\n");
                                             inputConfirmation = Console.ReadLine().ToUpper();
                                         }
 
-                                        choiceConfirmation = inputConfirmation[0];
+                                        
                                     // If the user chooses Y, then the method continues, else it stops.
                                     if (choiceConfirmation == 'Y')
                                         {
@@ -170,15 +172,15 @@ namespace MaoriQuiz
                         Console.WriteLine("Do You Want To Play Again? (Y/N)");
                     // a question asking if they want to play again. If the user pick 'Y', then it loops back to quiz difficulty. If they pick 'N', then the method stops.
                         string inputReplay = Console.ReadLine().ToUpper();
-                        
+                    //Converting a string to a char since the string has only 1 character and it is more professional just to convert it to a char.
+                    replay = inputReplay[0];
+
                     // Allows the method to only accepts letters that are Y or N only.
-                        while (inputReplay.Length != 1 || inputReplay != "Y" && inputReplay != "N")
+                    while (inputReplay.Length != 1 || replay != 'Y' && replay != 'N')
                         {
                             Console.WriteLine("\nInvalid Input. User Must Only Enter (Y/N) (Yes/No)");
                             inputReplay = Console.ReadLine().ToUpper();
                         }
-                        //Converting a string to a char since the string has only 1 character and it is more professional just to convert it to a char.
-                        replay = inputReplay[0];
                     } while (replay == 'Y');
                 }
         }
@@ -223,13 +225,13 @@ namespace MaoriQuiz
                 // The confirmation if their name is actually that, if they press N then they could redo their name from the top.
                 Console.WriteLine($"Are You Sure Your Name Is {firstName + " " + lastName}? (Y/N)");
                 string nameClarification = Console.ReadLine().ToUpper();
+                invalidName = nameClarification[0];
                 //It is the same function as like inputClarification and inputConfirmation. When user press anything other than 'Y' or 'N', the code would not accept.
-                while (nameClarification != "Y" && nameClarification != "N")
+                while (invalidName != 'Y' && invalidName != 'N')
                 {
                     Console.WriteLine("\nInvalid Input. User Must Only Enter (Y/N) (Yes/No)");
                     nameClarification = Console.ReadLine().ToUpper();
                 }
-                invalidName = nameClarification[0];
                 // when user confirms their name (Y) it would display infront of them and the next method would start.
                 if (invalidName == 'Y')
                 {
@@ -250,14 +252,15 @@ namespace MaoriQuiz
             Console.WriteLine("\nSelect Difficulty:\n----------------------------\n\nEasy (E)\n\nMedium (M)\n\nHard (H)\n\nImpossible (I)\n");
             Console.WriteLine("----------------------------");
             string inputquizDifficulty = Console.ReadLine().ToUpper();
-           // Same logic as the previous other method. I feel bothered explaining it multiple times. Basically the code would only accepts letter E,M,H,I. Other than that would be rejected.
-            while ((inputquizDifficulty.Length != 1) || inputquizDifficulty != "E" && inputquizDifficulty != "M" && inputquizDifficulty != "H" && inputquizDifficulty != "I")
+            // Converting string to a char
+            char quizDifficulty = inputquizDifficulty[0];
+            // Same logic as the previous other method. I feel bothered explaining it multiple times. Basically the code would only accepts letter E,M,H,I. Other than that would be rejected.
+            while ((inputquizDifficulty.Length != 1) || quizDifficulty != 'E' && quizDifficulty != 'M' && quizDifficulty != 'H' && quizDifficulty != 'I')
             {
                 Console.WriteLine("\nInvalid Option. You Have To Insert (E,M,H,I) Nothing else.");
                 inputquizDifficulty = Console.ReadLine().ToUpper();
                 
             }
-            char quizDifficulty = inputquizDifficulty[0];
             return quizDifficulty;
         }
 
@@ -270,14 +273,14 @@ namespace MaoriQuiz
                     // This question displays the question based on the quick dificulty
                     Console.WriteLine(inQuestion[i]);
                     string inputAnswer = Console.ReadLine().ToUpper();
+                // converting the string to a char.
+                char answer = inputAnswer[0];
                 // during the quiz, the user can only answer A,B,C or D. If they press anything than that, the method would reject the answer and they would need to require to enter a proper answer.
-                while (inputAnswer.Length != 1 ||inputAnswer != "A" && inputAnswer != "B" && inputAnswer != "C" && inputAnswer != "D")
+                while (inputAnswer.Length != 1 ||answer != 'A' && answer != 'B' && answer != 'C' && answer != 'D')
                 {
                     Console.WriteLine("Invalid Input. The Answer Has To Be Either, A,B,C,D. Any Other Answer Would Be Rejected.");
                     inputAnswer = Console.ReadLine().ToUpper();
                 }
-                // converting the string to a char.
-                char answer = inputAnswer[0];
                 //once they get an answer right, they would receive one point.
                     if (answer == correctAnswer[i])
                     {
